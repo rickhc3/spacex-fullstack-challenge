@@ -3,7 +3,7 @@ import Axios from 'axios';
 import Launch from 'App/Models/Launch';
 import Rocket from 'App/Models/Rocket';
 import { DateTime } from 'luxon';
-import { RocketData } from '@/typings/RocketDataInterface';
+import{ IRocket } from '@/typings/RocketDataInterface';
 
 export default class SaveLaunches extends BaseCommand {
   /**
@@ -74,7 +74,7 @@ export default class SaveLaunches extends BaseCommand {
     }
   }
 
-  private async getRocketName(rocketId: string): Promise<RocketData> {
+  private async getRocketName(rocketId: string): Promise<IRocket> {
     const response = await Axios.get(`https://api.spacexdata.com/v4/rockets/${rocketId}`);
     const data = response.data;
     return data;
